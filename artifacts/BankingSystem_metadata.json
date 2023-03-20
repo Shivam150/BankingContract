@@ -1,0 +1,275 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "BankBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "CarLoanDetails",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "OutstandingLoan",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "MonthlyEmi",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "NumberOfEMI",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "user_aadress",
+						"type": "address"
+					}
+				],
+				"name": "DepositBlcToAcc",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "receiver",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "duration",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "GetHomeLoan",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "receiver",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "duration",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "GetPersonalLoan",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "HomeLoanDetails",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "OutstandingLoan",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "MonthlyEmi",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "NumberOfEMI",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "PesonalLoanDetails",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "OutstandingLoan",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "MonthlyEmi",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "NumberOfEMI",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "User1",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "UserBlnc",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "TotalOutstandingLoan",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "PersonalOutstandingLoan",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "PersonalEmi",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "CarOutstandingLoan",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "CarEMI",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "HomeOutstandingLoan",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "HomeEmi",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "depositToBank",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "receiver",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "duration",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "getCarLoan",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"BankingApplication.sol": "BankingSystem"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"BankingApplication.sol": {
+			"keccak256": "0x8fd77aaf3e446b5c004491500d11f12f9a716dab1c20132724f6559acc44d717",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://d3420a9d9f3b5465f30732112623d6bfd2c3286398d90f52fb4529017e4c2132",
+				"dweb:/ipfs/QmYivdp26r7VPe3KykjC19iGHJjUTUuqvRUP3Uze8GoPD9"
+			]
+		}
+	},
+	"version": 1
+}
