@@ -10,7 +10,6 @@ contract Banking
     {
         uint Balance ;
         uint Date ;
-        address user;
 
     } 
 
@@ -67,9 +66,12 @@ contract Banking
         require(amount>0 && amount<Bblc,"Amount Shuld not be Zero And Less than ContractBalance");
 
         uint intrest = amount*14/100;
-        PersonalLoan[msg.sender].OutstandingLoan +=  amount +  intrest;
-        PersonalLoan[msg.sender].MonthlyEmi += PersonalLoan[msg.sender].OutstandingLoan/duration;
-        PersonalLoan[msg.sender].NumberOfEMI += duration;
+        LoanDetails memory person  = PersonalLoan[msg.sender];
+        person.OutstandingLoan +=  amount +  intrest;
+        person.MonthlyEmi += person.OutstandingLoan/duration;
+        person.NumberOfEMI += duration;
+        PersonalLoan[msg.sender] = person;
+
         
         payable(msg.sender).transfer(amount);
         Bblc = Bblc-amount; 
@@ -89,9 +91,12 @@ contract Banking
         require(amount>0 && amount<Bblc,"Amount Shuld not be Zero And Less than ContractBalance");
 
         uint intrest = amount*9/100;
-        CarLoan[msg.sender].OutstandingLoan += amount + intrest;
-        CarLoan[msg.sender].MonthlyEmi += CarLoan[msg.sender].OutstandingLoan/duration;
-        CarLoan[msg.sender].NumberOfEMI  += duration;
+        LoanDetails memory person = CarLoan[msg.sender];
+        person.OutstandingLoan += amount + intrest;
+        person.MonthlyEmi += person.OutstandingLoan/duration;
+        person.NumberOfEMI  += duration;
+
+        CarLoan[msg.sender] = person;
 
         payable(msg.sender).transfer(amount);
         Bblc = Bblc - amount;
@@ -111,9 +116,10 @@ contract Banking
         require(amount>0 && amount<Bblc,"Amount Shuld not be Zero And Less than ContractBalance");
 
         uint intrest = amount*7/100;
-        HomeLoan[msg.sender].OutstandingLoan += amount + intrest;
-        HomeLoan[msg.sender].MonthlyEmi += HomeLoan[msg.sender].OutstandingLoan/duration;
-        HomeLoan[msg.sender].NumberOfEMI += duration;
+        LoanDetails memory person = HomeLoan[msg.sender];
+        person.OutstandingLoan += amount + intrest;
+        person.MonthlyEmi += person.OutstandingLoan/duration;
+        person.NumberOfEMI += duration;
 
         payable(msg.sender).transfer(amount);
         Bblc = Bblc - amount;
@@ -132,9 +138,13 @@ contract Banking
             require(keccak256(abi.encodePacked(LoanType)) == keccak256(abi.encodePacked("Personal")),"Invalid Loan Type");
             require(amount == PersonalLoan[msg.sender].MonthlyEmi,"EMI must be equal to due amount");
              
-            PersonalLoan[msg.sender].OutstandingLoan -=  amount;
+            LoanDetails memory person  = PersonalLoan[msg.sender];
+
+            person.OutstandingLoan -=  amount;
             address(this).balance + amount;
-            PersonalLoan[msg.sender].NumberOfEMI -= 1;
+            person.NumberOfEMI -= 1;
+
+            PersonalLoan[msg.sender] = person;
         }
 
 
@@ -142,10 +152,13 @@ contract Banking
         {
             require(keccak256(abi.encodePacked(LoanType)) == keccak256(abi.encodePacked("Car")));
             require(amount == CarLoan[msg.sender].MonthlyEmi,"EMI must be equal to due amount");
+
+            LoanDetails memory person  = CarLoan[msg.sender];
             
-            CarLoan[msg.sender].OutstandingLoan -= amount;
+            person.OutstandingLoan -= amount;
             address(this).balance + amount;
-            CarLoan[msg.sender].NumberOfEMI -= 1;
+            person.NumberOfEMI -= 1;
+            CarLoan[msg.sender] = person;
 
         }
 
@@ -154,9 +167,13 @@ contract Banking
             require(keccak256(abi.encodePacked(LoanType)) == keccak256(abi.encodePacked("Home")));
             require(amount == HomeLoan[msg.sender].MonthlyEmi,"EMI must be equal to due amount");
              
-            HomeLoan[msg.sender].OutstandingLoan -= amount;
+            LoanDetails memory person  = HomeLoan[msg.sender];
+
+            person.OutstandingLoan -= amount;
             address(this).balance + amount;
-            HomeLoan[msg.sender].NumberOfEMI -= 1;
+            person.NumberOfEMI -= 1;
+
+            HomeLoan[msg.sender] = person;
         }
 
 
